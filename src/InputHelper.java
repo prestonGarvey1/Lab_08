@@ -12,7 +12,7 @@ public class InputHelper {
             if (input.length() > 0) {
                 valid = true;
             } else {
-                System.out.println("Error - Must enter string of non-zero length");
+                System.out.println("String is empty! Try again.");
             }
         } while (!valid);
         return input;
@@ -30,7 +30,7 @@ public class InputHelper {
                 valid = true;
 
             } else {
-                System.out.println("Error - Must enter integer value");
+                System.out.println("Integer values only, please try again.");
                 scan.nextLine();
             }
         } while (!valid);
@@ -51,11 +51,11 @@ public class InputHelper {
                 if (userInput >= min && userInput <= max) {
                     valid = true;
                 } else {
-                    System.out.println("Error - Input must be between " + min + " and " + max);
+                    System.out.println("Input value must be between " + min + " and " + max + ", please try again.");
                     scan.nextLine();
                 }
             } else {
-                System.out.println("Error - Must enter integer value");
+                System.out.println("Integer values only, please try again.");
                 scan.nextLine();
             }
 
@@ -75,7 +75,7 @@ public class InputHelper {
                 valid = true;
 
             } else {
-                System.out.println("Error - Must enter double value");
+                System.out.println("Please enter a double value and try again.");
                 scan.nextLine();
             }
         } while (!valid);
@@ -95,11 +95,11 @@ public class InputHelper {
                 if (userInput >= min && userInput <= max) {
                     valid = true;
                 } else {
-                    System.out.println("Error - Input must be between " + min + " and " + max);
+                    System.out.println("Value must be between " + min + " and " + max + ", please try again.");
                     scan.nextLine();
                 }
             } else {
-                System.out.println("Error - Must enter double value");
+                System.out.println("Please enter a double value and try again.");
                 scan.nextLine();
             }
 
@@ -120,10 +120,10 @@ public class InputHelper {
                 if (userInput > -1) {
                     valid = true;
                 } else {
-                    System.out.println("Error - Must enter positive value");
+                    System.out.println("Value must be positive! Please try again.");
                 }
             } else {
-                System.out.println("Error - Must enter integer value");
+                System.out.println("Please enter an integer value and try again.");
             }
         } while (!valid);
 
@@ -147,17 +147,21 @@ public class InputHelper {
                     valid = true;
                     YN = false;
                 } else {
-                    System.out.println("Error - Must enter Y or N input");
+                    System.out.println("Please provide either Y (yes), or N (no).");
                 }
             } else {
-                System.out.println("Error - Must enter String input");
+                System.out.println("Please enter a string input and try again.");
             }
 
         } while (!valid);
         return YN;
 
     }
-
+    // To convert Celsius to Fahrenheit
+    public static double celsiusToFahrenheit(Scanner scan, double celsius) {
+        celsius = InputHelper.getDouble(scan, "Please enter a temperature in celsius.");
+        return (celsius * 1.8) + 32.0;
+    }
     public static String getRegExString(Scanner scan, String prompt, String regExPattern) {
         boolean valid = false;
         String userInput;
@@ -168,7 +172,7 @@ public class InputHelper {
             if (userInput.matches(regExPattern)) {
                 valid = true;
             } else {
-                System.out.println("Error - Must match specified pattern");
+                System.out.println("Please provide your input in the specified pattern.");
             }
 
         } while (!valid);
